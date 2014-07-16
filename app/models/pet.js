@@ -5,6 +5,7 @@ function Pet(name, age, gender, species){
   this.age = parseInt(age);
   this.gender = gender;
   this.species = species;
+
   this.isZombie = false;
   this.wins = 0;
   

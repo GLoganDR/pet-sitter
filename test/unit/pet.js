@@ -124,7 +124,25 @@ describe('Pet', function(){
     expect(fluffy.wins).to.equal(3);
     expect(fluffy.health).to.be.within(25,50);
     });
-    it('should not resurrect the pet', function(){
+    it('should not resurrect the pet - pet still alive', function(){
+      var fluffy = new Pet('fluffy', 3, 'female', 'sloth');
+      fluffy.isZombie = false;
+      fluffy.wins = 8;
+
+      fluffy.resurrect();
+
+      expect(fluffy.isZombie).to.be.false;
+      expect(fluffy.wins).to.equal(8);
+    });
+    it('should not resurrect the pet - not enough wins', function(){
+      var fluffy = new Pet('fluffy', 3, 'female', 'sloth');
+      fluffy.isZombie = true;
+      fluffy.wins = 2;
+
+      fluffy.resurrect();
+
+      expect(fluffy.isZombie).to.be.true;
+      expect(fluffy.wins).to.equal(2);
     });
   });
   });
